@@ -5,7 +5,7 @@ import ApperIcon from "@/components/ApperIcon";
 import Leads from "@/components/pages/Leads";
 
 const Sidebar = ({ isOpen, onClose, className, ...props }) => {
-  const menuItems = [
+const menuItems = [
     { 
       name: "Dashboard", 
       path: "/", 
@@ -15,6 +15,11 @@ const Sidebar = ({ isOpen, onClose, className, ...props }) => {
       name: "Contacts", 
       path: "/contacts", 
       icon: "Users" 
+    },
+    { 
+      name: "Companies", 
+      path: "/companies", 
+      icon: "Building2" 
     },
     { 
       name: "Leads", 
