@@ -1,8 +1,10 @@
-import { useNavigate } from 'react-router-dom';
-import Button from '@/components/atoms/Button';
-import Badge from '@/components/atoms/Badge';
-import ApperIcon from '@/components/ApperIcon';
-import { cn } from '@/utils/cn';
+import { useNavigate } from "react-router-dom";
+import React from "react";
+import { cn } from "@/utils/cn";
+import ApperIcon from "@/components/ApperIcon";
+import Contacts from "@/components/pages/Contacts";
+import Button from "@/components/atoms/Button";
+import Badge from "@/components/atoms/Badge";
 
 export default function CompanyCard({ company, onEdit, onDelete, className }) {
   const navigate = useNavigate();
@@ -39,6 +41,7 @@ export default function CompanyCard({ company, onEdit, onDelete, className }) {
     }
     return `$${revenue}`;
   }
+}
 
   return (
     <div

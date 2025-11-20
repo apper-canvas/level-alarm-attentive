@@ -1,18 +1,24 @@
-import { useState, useEffect } from 'react';
-import { toast } from 'react-toastify';
-import Header from '@/components/organisms/Header';
-import CompanyCard from '@/components/organisms/CompanyCard';
-import CompanyForm from '@/components/organisms/CompanyForm';
-import Loading from '@/components/ui/Loading';
-import Error from '@/components/ui/Error';
-import Empty from '@/components/ui/Empty';
-import Modal from '@/components/molecules/Modal';
-import Button from '@/components/atoms/Button';
-import Input from '@/components/atoms/Input';
-import Select from '@/components/atoms/Select';
-import ApperIcon from '@/components/ApperIcon';
-import { companyService } from '@/services/api/companyService';
+import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import { companyService } from "@/services/api/companyService";
+import ApperIcon from "@/components/ApperIcon";
+import Modal from "@/components/molecules/Modal";
+import Loading from "@/components/ui/Loading";
+import Empty from "@/components/ui/Empty";
+import Error from "@/components/ui/Error";
+import Contacts from "@/components/pages/Contacts";
+import CompanyForm from "@/components/organisms/CompanyForm";
+import CompanyCard from "@/components/organisms/CompanyCard";
+import Header from "@/components/organisms/Header";
+import Select from "@/components/atoms/Select";
+import Button from "@/components/atoms/Button";
+import Input from "@/components/atoms/Input";
 
+const VIEW_OPTIONS = [
+  { value: 'cards', label: 'Cards', icon: 'Grid3X3' },
+  { value: 'table', label: 'Table', icon: 'Table' },
+  { value: 'list', label: 'List', icon: 'List' }
+];
 const INDUSTRIES = [
   { value: '', label: 'All Industries' },
   { value: 'Technology', label: 'Technology' },
@@ -35,11 +41,6 @@ const COMPANY_SIZES = [
   { value: '1000+', label: '1000+ employees' }
 ];
 
-const VIEW_OPTIONS = [
-  { value: 'cards', label: 'Cards', icon: 'Grid3X3' },
-  { value: 'table', label: 'Table', icon: 'Table' },
-  { value: 'list', label: 'List', icon: 'List' }
-];
 
 export default function Companies() {
   const [companies, setCompanies] = useState([]);
@@ -79,7 +80,7 @@ export default function Companies() {
     } finally {
       setLoading(false);
     }
-  }
+}
 
   function applyFilters() {
     let filtered = [...companies];
@@ -478,5 +479,5 @@ export default function Companies() {
         </Modal>
       )}
     </div>
-  );
+);
 }

@@ -77,9 +77,8 @@ export default function CompanyForm({ isOpen, onClose, onSubmit, company = null 
         resetForm();
       }
       setErrors({});
-    }
+}
   }, [isOpen, company]);
-
   function resetForm() {
     setFormData({
       companyName: '',

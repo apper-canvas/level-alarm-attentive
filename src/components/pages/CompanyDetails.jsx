@@ -1,15 +1,17 @@
-import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import Button from '@/components/atoms/Button';
-import Badge from '@/components/atoms/Badge';
-import Loading from '@/components/ui/Loading';
-import Error from '@/components/ui/Error';
-import ApperIcon from '@/components/ApperIcon';
-import CompanyForm from '@/components/organisms/CompanyForm';
-import Modal from '@/components/molecules/Modal';
-import { companyService } from '@/services/api/companyService';
-import { format } from 'date-fns';
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import { companyService } from "@/services/api/companyService";
+import { format } from "date-fns";
+import ApperIcon from "@/components/ApperIcon";
+import Modal from "@/components/molecules/Modal";
+import Loading from "@/components/ui/Loading";
+import Error from "@/components/ui/Error";
+import Contacts from "@/components/pages/Contacts";
+import Companies from "@/components/pages/Companies";
+import CompanyForm from "@/components/organisms/CompanyForm";
+import Button from "@/components/atoms/Button";
+import Badge from "@/components/atoms/Badge";
 
 export default function CompanyDetails() {
   const { id } = useParams();
@@ -20,11 +22,11 @@ export default function CompanyDetails() {
   const [showEditForm, setShowEditForm] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
-  useEffect(() => {
+useEffect(() => {
     loadCompany();
   }, [id]);
 
-  async function loadCompany() {
+async function loadCompany() {
     try {
       setLoading(true);
       setError(null);
@@ -361,8 +363,7 @@ export default function CompanyDetails() {
             </div>
           </div>
         </div>
-      </div>
-
+</div>
       {/* Edit Form Modal */}
       <CompanyForm
         isOpen={showEditForm}
@@ -413,6 +414,9 @@ export default function CompanyDetails() {
           </div>
         </Modal>
       )}
+)}
     </div>
+  );
+}
   );
 }

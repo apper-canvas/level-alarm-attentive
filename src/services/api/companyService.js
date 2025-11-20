@@ -1,7 +1,10 @@
-import companiesData from '@/services/mockData/companies.json';
+import companiesData from "@/services/mockData/companies.json";
+import React from "react";
+import Error from "@/components/ui/Error";
 
 const STORAGE_KEY = 'crm-companies';
 
+// Initialize storage with sample data
 // Initialize storage with sample data
 function initializeStorage() {
   const existing = localStorage.getItem(STORAGE_KEY);
@@ -9,7 +12,6 @@ function initializeStorage() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(companiesData));
   }
 }
-
 // Get companies from localStorage
 function getStoredCompanies() {
   const stored = localStorage.getItem(STORAGE_KEY);
@@ -92,5 +94,5 @@ export const companyService = {
 
     saveCompanies(filteredCompanies);
     return true;
-  }
+}
 };
