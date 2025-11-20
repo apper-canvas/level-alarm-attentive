@@ -15,14 +15,20 @@ const ContactTable = ({
   const [sortDirection, setSortDirection] = useState("asc");
 
   const filteredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+`${contact.firstName || ''} ${contact.lastName || ''}`.toLowerCase().includes(searchTerm.toLowerCase()) ||
     contact.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    (contact.company && contact.company.toLowerCase().includes(searchTerm.toLowerCase()))
+    (contact.companyName && contact.companyName.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
-  const sortedContacts = [...filteredContacts].sort((a, b) => {
-    const aValue = a[sortField] || "";
-    const bValue = b[sortField] || "";
+const sortedContacts = [...filteredContacts].sort((a, b) => {
+    let aValue = a[sortField] || "";
+    let bValue = b[sortField] || "";
+    
+    // Handle name field for sorting
+    if (sortField === "name") {
+      aValue = `${a.firstName || ''} ${a.lastName || ''}`.trim();
+      bValue = `${b.firstName || ''} ${b.lastName || ''}`.trim();
+    }
     
     if (sortDirection === "asc") {
       return aValue.toString().localeCompare(bValue.toString());
@@ -74,12 +80,13 @@ const ContactTable = ({
         <table className="w-full">
           <thead className="bg-secondary-50 border-b border-secondary-200">
             <tr>
-              {[
+{[
                 { key: "name", label: "Name" },
                 { key: "email", label: "Email" },
                 { key: "phone", label: "Phone" },
-                { key: "company", label: "Company" },
-                { key: "createdAt", label: "Added" },
+                { key: "companyName", label: "Company" },
+                { key: "jobTitle", label: "Job Title" },
+                { key: "createdDate", label: "Added" },
               ].map((column) => (
                 <th key={column.key} className="px-6 py-4 text-left">
                   <button
@@ -105,8 +112,8 @@ const ContactTable = ({
                 }`}
               >
                 <td className="px-6 py-4">
-                  <div className="font-medium text-secondary-900">
-                    {contact.name}
+<div className="font-medium text-secondary-900">
+                    {`${contact.firstName || ''} ${contact.lastName || ''}`.trim() || 'No Name'}
                   </div>
                 </td>
                 <td className="px-6 py-4">
@@ -120,8 +127,13 @@ const ContactTable = ({
                   </div>
                 </td>
                 <td className="px-6 py-4">
+<div className="text-secondary-600">
+                    {contact.companyName || "-"}
+                  </div>
+                </td>
+                <td className="px-6 py-4">
                   <div className="text-secondary-600">
-                    {contact.company || "-"}
+                    {contact.jobTitle || "-"}
                   </div>
                 </td>
                 <td className="px-6 py-4">
@@ -153,7 +165,7 @@ const ContactTable = ({
         </table>
       </div>
 
-      {sortedContacts.length === 0 && (
+{sortedContacts.length === 0 && (
         <div className="text-center py-12">
           <div className="text-secondary-400 mb-2">
             <ApperIcon name="Search" size={24} className="mx-auto mb-2" />

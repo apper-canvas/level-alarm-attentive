@@ -1,6 +1,6 @@
 import contactsData from "@/services/mockData/contacts.json";
 
-const STORAGE_KEY = "crm_contacts";
+const STORAGE_KEY = "crm-contacts";
 
 // Initialize localStorage with default data if empty
 const initializeStorage = () => {
@@ -42,16 +42,42 @@ export const contactService = {
     return { ...contact };
   },
 
-  async create(contactData) {
+async create(contactData) {
     await delay(300);
     const contacts = getStoredContacts();
     const maxId = contacts.length > 0 ? Math.max(...contacts.map(c => c.Id)) : 0;
+    const contactId = maxId + 1;
     
     const newContact = {
-      Id: maxId + 1,
-      ...contactData,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
+      Id: contactId,
+      id: `CONT-${contactId.toString().padStart(4, '0')}`,
+      firstName: contactData.firstName,
+      lastName: contactData.lastName,
+      email: contactData.email,
+      phone: contactData.phone || '',
+      jobTitle: contactData.jobTitle || '',
+      companyId: contactData.companyId || null,
+      companyName: contactData.companyName || '',
+      source: contactData.source || '',
+      status: contactData.status || 'active',
+      address: {
+        street: contactData.address?.street || '',
+        city: contactData.address?.city || '',
+        state: contactData.address?.state || '',
+        zip: contactData.address?.zip || '',
+        country: contactData.address?.country || ''
+      },
+      socialLinks: {
+        linkedin: contactData.socialLinks?.linkedin || '',
+        twitter: contactData.socialLinks?.twitter || '',
+        facebook: contactData.socialLinks?.facebook || ''
+      },
+      tags: contactData.tags || [],
+      assignedTo: contactData.assignedTo || '',
+      notes: contactData.notes || '',
+      createdDate: new Date().toISOString(),
+      createdBy: contactData.createdBy || 'current-user',
+      modifiedDate: new Date().toISOString()
     };
     
     contacts.push(newContact);
@@ -68,10 +94,10 @@ export const contactService = {
       throw new Error("Contact not found");
     }
     
-    contacts[index] = {
+contacts[index] = {
       ...contacts[index],
       ...contactData,
-      updatedAt: new Date().toISOString()
+      modifiedDate: new Date().toISOString()
     };
     
     saveContacts(contacts);

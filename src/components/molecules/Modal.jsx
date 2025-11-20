@@ -35,7 +35,7 @@ const Modal = ({
         <div 
           className={cn(
             "relative transform overflow-hidden rounded-xl bg-white text-left shadow-xl transition-all w-full max-w-lg",
-            className
+className
           )}
           {...props}
         >

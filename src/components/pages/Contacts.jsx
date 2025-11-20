@@ -65,7 +65,7 @@ const Contacts = () => {
     }
   };
 
-  const handleSubmitContact = async (formData) => {
+const handleSubmitContact = async (formData) => {
     try {
       if (editingContact) {
         const updatedContact = await contactService.update(editingContact.Id, formData);
@@ -74,8 +74,18 @@ const Contacts = () => {
       } else {
         const newContact = await contactService.create(formData);
         setContacts(prev => [...prev, newContact]);
-        toast.success("Contact added successfully!");
+        
+        // Success notification with action options
+        toast.success("Contact created successfully!", {
+          onClick: () => {
+            // Could navigate to contact details view
+          }
+        });
       }
+      
+      // Close form and reset editing state
+      setIsFormOpen(false);
+      setEditingContact(null);
     } catch (err) {
       toast.error("Failed to save contact. Please try again.");
       console.error("Error saving contact:", err);
