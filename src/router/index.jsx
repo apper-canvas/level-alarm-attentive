@@ -7,8 +7,8 @@ const Contacts = lazy(() => import("@/components/pages/Contacts"));
 const Companies = lazy(() => import("@/components/pages/Companies"));
 const CompanyDetails = lazy(() => import("@/components/pages/CompanyDetails"));
 const Leads = lazy(() => import("@/components/pages/Leads"));
+const Deals = lazy(() => import("@/components/pages/Deals"));
 const NotFound = lazy(() => import("@/components/pages/NotFound"));
-
 const LoadingFallback = () => (
   <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
     <div className="text-center space-y-4">
@@ -55,10 +55,18 @@ path: "companies",
     ),
   },
   {
-    path: "leads",
+path: "leads",
     element: (
       <Suspense fallback={<LoadingFallback />}>
         <Leads />
+      </Suspense>
+    ),
+  },
+  {
+    path: "deals",
+    element: (
+      <Suspense fallback={<LoadingFallback />}>
+        <Deals />
       </Suspense>
     ),
   },

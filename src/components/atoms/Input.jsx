@@ -15,12 +15,13 @@ const Input = forwardRef(({
           {label}
         </label>
       )}
-      <input
+<input
         ref={ref}
         type={type}
         className={cn(
           "block w-full px-4 py-3 text-secondary-900 bg-white border border-secondary-300 rounded-lg placeholder-secondary-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-200",
           error && "border-red-300 focus:border-red-500 focus:ring-red-500",
+          type === "date" && "cursor-pointer",
           className
         )}
         {...props}

@@ -32,10 +32,10 @@ const Modal = ({
           onClick={onClose}
         />
         
-        <div 
+<div 
           className={cn(
-            "relative transform overflow-hidden rounded-xl bg-white text-left shadow-xl transition-all w-full max-w-lg",
-className
+            "relative transform overflow-hidden rounded-xl bg-white text-left shadow-xl transition-all w-full max-w-4xl",
+            className
           )}
           {...props}
         >
