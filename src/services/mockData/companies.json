@@ -1,0 +1,122 @@
+[
+  {
+    "Id": 1,
+    "companyName": "TechCorp Solutions",
+    "website": "https://techcorp.com",
+    "industry": "Technology",
+    "companySize": "51-200",
+    "annualRevenue": 5000000,
+    "phone": "+1 (555) 123-4567",
+    "email": "contact@techcorp.com",
+    "address": {
+      "street": "123 Tech Street",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip": "94105",
+      "country": "USA"
+    },
+    "description": "Leading technology solutions provider specializing in enterprise software development and digital transformation services.",
+    "socialLinks": {
+      "linkedin": "https://linkedin.com/company/techcorp",
+      "twitter": "https://twitter.com/techcorp",
+      "facebook": ""
+    },
+    "tags": ["Enterprise", "Software", "Cloud"],
+    "assignedTo": "John Smith",
+    "contactCount": 15,
+    "dealCount": 8,
+    "totalDealValue": 750000,
+    "createdAt": "2024-01-15T08:30:00.000Z",
+    "updatedAt": "2024-01-15T08:30:00.000Z"
+  },
+  {
+    "Id": 2,
+    "companyName": "HealthFirst Medical",
+    "website": "https://healthfirst.com",
+    "industry": "Healthcare",
+    "companySize": "201-500",
+    "annualRevenue": 12000000,
+    "phone": "+1 (555) 987-6543",
+    "email": "info@healthfirst.com",
+    "address": {
+      "street": "456 Medical Center Dr",
+      "city": "Boston",
+      "state": "MA",
+      "zip": "02115",
+      "country": "USA"
+    },
+    "description": "Comprehensive healthcare services providing innovative medical solutions and patient-centered care across multiple locations.",
+    "socialLinks": {
+      "linkedin": "https://linkedin.com/company/healthfirst",
+      "twitter": "",
+      "facebook": "https://facebook.com/healthfirstmed"
+    },
+    "tags": ["Healthcare", "Medical", "Innovation"],
+    "assignedTo": "Sarah Johnson",
+    "contactCount": 32,
+    "dealCount": 12,
+    "totalDealValue": 1200000,
+    "createdAt": "2024-01-10T14:20:00.000Z",
+    "updatedAt": "2024-01-10T14:20:00.000Z"
+  },
+  {
+    "Id": 3,
+    "companyName": "GreenEnergy Solutions",
+    "website": "https://greenenergy.com",
+    "industry": "Manufacturing",
+    "companySize": "11-50",
+    "annualRevenue": 2500000,
+    "phone": "+1 (555) 456-7890",
+    "email": "contact@greenenergy.com",
+    "address": {
+      "street": "789 Renewable Way",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78701",
+      "country": "USA"
+    },
+    "description": "Sustainable energy solutions company focused on solar panel manufacturing and renewable energy consulting services.",
+    "socialLinks": {
+      "linkedin": "https://linkedin.com/company/greenenergy",
+      "twitter": "https://twitter.com/greenenergysol",
+      "facebook": ""
+    },
+    "tags": ["Renewable", "Solar", "Sustainable"],
+    "assignedTo": "Michael Brown",
+    "contactCount": 8,
+    "dealCount": 5,
+    "totalDealValue": 450000,
+    "createdAt": "2024-01-20T10:15:00.000Z",
+    "updatedAt": "2024-01-20T10:15:00.000Z"
+  },
+  {
+    "Id": 4,
+    "companyName": "RetailMax Inc",
+    "website": "https://retailmax.com",
+    "industry": "Retail",
+    "companySize": "500+",
+    "annualRevenue": 45000000,
+    "phone": "+1 (555) 321-9876",
+    "email": "business@retailmax.com",
+    "address": {
+      "street": "321 Commerce Blvd",
+      "city": "Chicago",
+      "state": "IL",
+      "zip": "60601",
+      "country": "USA"
+    },
+    "description": "Large-scale retail chain specializing in consumer electronics and home appliances with nationwide store presence.",
+    "socialLinks": {
+      "linkedin": "https://linkedin.com/company/retailmax",
+      "twitter": "https://twitter.com/retailmax",
+      "facebook": "https://facebook.com/retailmaxinc"
+    },
+    "tags": ["Retail", "Electronics", "National"],
+    "assignedTo": "Emily Davis",
+    "contactCount": 45,
+    "dealCount": 20,
+    "totalDealValue": 2100000,
+    "createdAt": "2024-01-05T16:45:00.000Z",
+    "updatedAt": "2024-01-05T16:45:00.000Z"
+  }
+]

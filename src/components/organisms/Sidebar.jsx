@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
-import ApperIcon from "@/components/ApperIcon";
+import React from "react";
 import { cn } from "@/utils/cn";
+import ApperIcon from "@/components/ApperIcon";
+import Leads from "@/components/pages/Leads";
 
 const Sidebar = ({ isOpen, onClose, className, ...props }) => {
   const menuItems = [
@@ -37,10 +39,10 @@ const Sidebar = ({ isOpen, onClose, className, ...props }) => {
               <h1 className="text-xl font-bold bg-gradient-to-r from-primary-600 to-primary-700 bg-clip-text text-transparent">
                 CRM Pro
               </h1>
-            </div>
+</div>
           </div>
           
-          <nav className="flex-1 px-4 py-6 space-y-2">
+          <nav className="mt-8 flex-1 px-4 space-y-2 overflow-y-auto">
             {menuItems.map((item) => (
               <NavLink
                 key={item.path}
@@ -65,6 +67,7 @@ const Sidebar = ({ isOpen, onClose, className, ...props }) => {
               </NavLink>
             ))}
           </nav>
+        </div>
         </div>
       </aside>
 
