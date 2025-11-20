@@ -149,6 +149,18 @@ setFormData({
       }
     });
 
+    // Validate close date is not in the past
+    if (formData.closeDate) {
+      const today = new Date();
+      const closeDate = new Date(formData.closeDate);
+      today.setHours(0, 0, 0, 0);
+      closeDate.setHours(0, 0, 0, 0);
+      
+      if (closeDate < today) {
+        newErrors.closeDate = 'Close date cannot be in the past';
+      }
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   }

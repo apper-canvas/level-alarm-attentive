@@ -305,7 +305,7 @@ return (
     <div className="space-y-6">
       <Header 
         title="Sales Pipeline"
-        onAddClick={() => handleAddDeal()}
+onAddClick={() => handleAddDeal()}
         addButtonLabel="New Deal"
       />
 
