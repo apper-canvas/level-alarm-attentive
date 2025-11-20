@@ -118,7 +118,7 @@ export const dealService = {
   async create(dealData) {
     await delay(400);
     const deals = getStoredDeals();
-    const newId = Math.max(0, ...deals.map(d => d.Id)) + 1;
+const newId = Math.max(0, ...deals.map(d => d.Id)) + 1;
     
     const newDeal = {
       ...dealData,
@@ -145,7 +145,7 @@ export const dealService = {
     }
     
     const updatedDeal = {
-      ...deals[index],
+...deals[index],
       ...updates,
       Id: parseInt(id),
       modifiedDate: new Date().toISOString()

@@ -184,7 +184,7 @@ function handleAddDeal(stage = 'Lead') {
 
   async function handleSubmitDeal(formData) {
     try {
-      if (selectedDeal && selectedDeal.Id) {
+if (selectedDeal && selectedDeal.Id) {
         await dealService.update(selectedDeal.Id, formData);
         toast.success('Deal updated successfully');
         setIsEditModalOpen(false);
@@ -404,7 +404,7 @@ return (
                         >
                           {/* Deal Header */}
                           <div className="flex items-start justify-between mb-2">
-                            <h4 className="font-semibold text-secondary-900 text-sm leading-5 flex-1">
+<h4 className="font-semibold text-secondary-900 text-sm leading-5 flex-1">
                               {deal.dealName}
                             </h4>
                             <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
