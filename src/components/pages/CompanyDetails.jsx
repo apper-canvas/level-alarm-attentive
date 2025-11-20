@@ -414,7 +414,6 @@ async function loadCompany() {
           </div>
         </Modal>
       )}
-)}
     </div>
   );
 }
