@@ -6,14 +6,14 @@ function initializeStorage() {
   if (!localStorage.getItem('crm-deals')) {
     const defaultDeals = [
       {
-        Id: 1,
+Id: 1,
         dealName: "TechCorp - Website Redesign",
         contactId: 1,
         companyId: 1,
         amount: 15000,
-        closeDate: "2024-03-15",
+        closeDate: "2024-04-15",
         stage: "Qualified",
-        probability: 75,
+        probability: 25,
         source: "Inbound",
         priority: "High",
         assignedTo: "John Smith",
@@ -32,14 +32,14 @@ function initializeStorage() {
         lostReason: null
       },
       {
-        Id: 2,
+Id: 2,
         dealName: "InnovateCorp - Mobile App Development",
         contactId: 2,
         companyId: 2,
         amount: 45000,
-        closeDate: "2024-04-20",
+        closeDate: "2024-05-20",
         stage: "Proposal",
-        probability: 60,
+        probability: 50,
         source: "Referral",
         priority: "Medium",
         assignedTo: "Sarah Johnson",
@@ -58,14 +58,14 @@ function initializeStorage() {
         lostReason: null
       },
       {
-        Id: 3,
+Id: 3,
         dealName: "StartupXYZ - Brand Identity Package",
         contactId: 3,
         companyId: 3,
         amount: 8500,
-        closeDate: "2024-03-30",
+        closeDate: "2024-04-30",
         stage: "Negotiation",
-        probability: 85,
+        probability: 75,
         source: "Outbound",
         priority: "High",
         assignedTo: "Michael Brown",
@@ -120,14 +120,18 @@ export const dealService = {
     const deals = getStoredDeals();
 const newId = Math.max(0, ...deals.map(d => d.Id)) + 1;
     
-    const newDeal = {
+const newDeal = {
       ...dealData,
       Id: newId,
       createdDate: new Date().toISOString(),
       modifiedDate: new Date().toISOString(),
       wonDate: null,
       lostDate: null,
-      lostReason: null
+      lostReason: null,
+      // Ensure all fields have default values if not provided
+      products: dealData.products || [],
+      competitors: dealData.competitors || '',
+      nextStep: dealData.nextStep || ''
     };
     
     deals.push(newDeal);
