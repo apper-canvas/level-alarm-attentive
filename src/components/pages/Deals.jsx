@@ -76,8 +76,10 @@ function Deals() {
   const [companies, setCompanies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
+const [searchTerm, setSearchTerm] = useState('');
   const [viewMode, setViewMode] = useState('board');
+  const [stageFilter, setStageFilter] = useState('');
+  const [sourceFilter, setSourceFilter] = useState('');
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [selectedDeal, setSelectedDeal] = useState(null);
@@ -92,7 +94,7 @@ function Deals() {
 
 useEffect(() => {
     applyFilters();
-  }, [deals, searchTerm]);
+}, [deals, searchTerm, stageFilter, sourceFilter]);
 
   async function loadDeals() {
     try {
@@ -127,7 +129,7 @@ useEffect(() => {
   }
 
 function applyFilters() {
-    let filtered = deals;
+let filtered = deals;
 
     if (searchTerm) {
       const search = searchTerm.toLowerCase();
@@ -138,6 +140,14 @@ function applyFilters() {
         getContactName(deal.contactId).toLowerCase().includes(search) ||
         getCompanyName(deal.companyId).toLowerCase().includes(search)
       );
+    }
+
+    if (stageFilter) {
+      filtered = filtered.filter(deal => deal.stage === stageFilter);
+    }
+
+    if (sourceFilter) {
+      filtered = filtered.filter(deal => deal.source === sourceFilter);
     }
 
     setFilteredDeals(filtered);
@@ -288,8 +298,6 @@ function getContactName(contactId) {
     return daysSinceModified;
   }
 
-  if (loading) return <Loading />;
-  if (error) return <Error message={error} onRetry={loadDeals} />;
   if (loading) return <Loading />;
   if (error) return <Error message={error} onRetry={loadDeals} />;
 
