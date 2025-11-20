@@ -36,8 +36,9 @@ const Contacts = () => {
     loadContacts();
   }, []);
 
-  const handleAddContact = () => {
+const handleAddContact = () => {
     setEditingContact(null);
+    setIsFormOpen(true);
     setIsFormOpen(true);
   };
 
@@ -83,9 +84,12 @@ const handleSubmitContact = async (formData) => {
         });
       }
       
-      // Close form and reset editing state
+      // Close modal and reset editing state
       setIsFormOpen(false);
       setEditingContact(null);
+      
+      // Clear any saved form data from storage
+      window.localStorage.removeItem('contactFormData');
     } catch (err) {
       toast.error("Failed to save contact. Please try again.");
       console.error("Error saving contact:", err);
@@ -147,12 +151,28 @@ const handleSubmitContact = async (formData) => {
         />
       </div>
       
-      <ContactForm
+<Modal
         isOpen={isFormOpen}
-        onClose={() => setIsFormOpen(false)}
-        onSubmit={handleSubmitContact}
-        contact={editingContact}
-      />
+        onClose={() => {
+          setIsFormOpen(false);
+          setEditingContact(null);
+          // Clear any saved form data
+          window.localStorage.removeItem('contactFormData');
+        }}
+        title={editingContact ? "Edit Contact" : "Add New Contact"}
+        size="xl"
+      >
+        <ContactForm
+          isOpen={isFormOpen}
+          onClose={() => {
+            setIsFormOpen(false);
+            setEditingContact(null);
+            window.localStorage.removeItem('contactFormData');
+          }}
+          onSubmit={handleSubmitContact}
+          contact={editingContact}
+        />
+      </Modal>
 
       <Modal
         isOpen={!!deleteConfirm}
