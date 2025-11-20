@@ -179,5 +179,6 @@ export default function CompanyCard({ company, onEdit, onDelete, className }) {
           View Details
         </Button>
       </div>
-    </div>
-);
+</div>
+  );
+}
