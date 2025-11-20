@@ -160,7 +160,7 @@ const handleSubmitContact = async (formData) => {
           window.localStorage.removeItem('contactFormData');
         }}
         title={editingContact ? "Edit Contact" : "Add New Contact"}
-        size="xl"
+className="max-w-4xl"
       >
         <ContactForm
           isOpen={isFormOpen}

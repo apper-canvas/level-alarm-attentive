@@ -211,7 +211,7 @@ return (
       isOpen={isOpen} 
       onClose={onClose} 
       title={contact ? "Edit Contact" : "New Contact"}
-      className="max-w-4xl"
+      className="max-w-4xl max-h-[90vh] overflow-y-auto"
     >
 <div className="max-h-[80vh] overflow-y-auto">
         <form onSubmit={(e) => handleSubmit(e, false)} className="space-y-6">
