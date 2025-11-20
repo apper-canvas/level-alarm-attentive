@@ -67,8 +67,7 @@ const Sidebar = ({ isOpen, onClose, className, ...props }) => {
               </NavLink>
             ))}
           </nav>
-        </div>
-        </div>
+</div>
       </aside>
 
       {/* Mobile Sidebar */}

@@ -114,8 +114,8 @@ export default function CompanyForm({ isOpen, onClose, onSubmit, company = null 
       newErrors.companyName = 'Company name is required';
     }
 
-    if (formData.website && formData.website.trim()) {
-      const urlPattern = /^https?:\/\/([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+if (formData.website && formData.website.trim()) {
+      const urlPattern = /^https?:\/\/([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/;
       if (!urlPattern.test(formData.website)) {
         newErrors.website = 'Please enter a valid URL (include http:// or https://)';
       }
