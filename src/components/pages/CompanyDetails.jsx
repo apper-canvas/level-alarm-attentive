@@ -418,5 +418,3 @@ async function loadCompany() {
     </div>
   );
 }
-  );
-}

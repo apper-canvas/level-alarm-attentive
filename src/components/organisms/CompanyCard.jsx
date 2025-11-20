@@ -41,8 +41,6 @@ export default function CompanyCard({ company, onEdit, onDelete, className }) {
     }
     return `$${revenue}`;
   }
-}
-
   return (
     <div
       className={cn(
@@ -182,5 +180,4 @@ export default function CompanyCard({ company, onEdit, onDelete, className }) {
         </Button>
       </div>
     </div>
-  );
-}
+);
