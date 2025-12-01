@@ -26,6 +26,11 @@ const menuItems = [
       path: "/leads", 
       icon: "TrendingUp" 
     },
+    { 
+      name: "Deals", 
+      path: "/pipeline", 
+      icon: "Pipeline" 
+    },
   ];
 
   return (
