@@ -4,16 +4,16 @@ import { dealService } from "@/services/api/dealService";
 import { contactService } from "@/services/api/contactService";
 import { companyService } from "@/services/api/companyService";
 import ApperIcon from "@/components/ApperIcon";
-import Modal from "@/components/molecules/Modal";
 import Loading from "@/components/ui/Loading";
-import Empty from "@/components/ui/Empty";
 import Error from "@/components/ui/Error";
-import DealForm from "@/components/organisms/DealForm";
-import Header from "@/components/organisms/Header";
+import Empty from "@/components/ui/Empty";
 import Select from "@/components/atoms/Select";
 import Button from "@/components/atoms/Button";
-import Badge from "@/components/atoms/Badge";
 import Input from "@/components/atoms/Input";
+import Badge from "@/components/atoms/Badge";
+import Header from "@/components/organisms/Header";
+import DealForm from "@/components/organisms/DealForm";
+import Modal from "@/components/molecules/Modal";
 const DEAL_STAGES = [
   { 
     value: 'Lead', 
@@ -207,47 +207,6 @@ function handleAddDeal(stage = 'Lead') {
     }
   }
 
-  function handleEditDeal(deal) {
-    setSelectedDeal(deal);
-    setIsEditModalOpen(true);
-  }
-
-  function handleDeleteDeal(deal) {
-    setDealToDelete(deal);
-    setIsDeleteModalOpen(true);
-  }
-
-  async function confirmDelete() {
-    if (!dealToDelete) return;
-
-    try {
-      await dealService.delete(dealToDelete.Id);
-      toast.success('Deal deleted successfully');
-      setIsDeleteModalOpen(false);
-      setDealToDelete(null);
-      await loadDeals();
-    } catch (err) {
-      toast.error('Failed to delete deal');
-    }
-  }
-
-  async function handleSubmitDeal(formData) {
-    try {
-if (selectedDeal && selectedDeal.Id) {
-        await dealService.update(selectedDeal.Id, formData);
-        toast.success('Deal updated successfully');
-        setIsEditModalOpen(false);
-      } else {
-        await dealService.create(formData);
-        toast.success('Deal created successfully');
-        setIsAddModalOpen(false);
-      }
-      setSelectedDeal(null);
-      await loadDeals();
-    } catch (err) {
-      toast.error(selectedDeal?.Id ? 'Failed to update deal' : 'Failed to create deal');
-    }
-  }
 
 // Drag and Drop Functions
   function handleDragStart(e, deal) {
@@ -334,36 +293,12 @@ function getDealsForStage(stage) {
     return {
       count: stageDeals.length,
       totalValue,
-      weightedValue
-    };
+};
   }
-
-  // Apply filters
-  useEffect(() => {
-    let filtered = [...deals];
-
-    if (searchTerm) {
-      const searchLower = searchTerm.toLowerCase();
-      filtered = filtered.filter(deal => 
-        deal.dealName?.toLowerCase().includes(searchLower) ||
-        getContactName(deal.contactId).toLowerCase().includes(searchLower) ||
-        getCompanyName(deal.companyId).toLowerCase().includes(searchLower)
-      );
-    }
-
-    if (stageFilter) {
-      filtered = filtered.filter(deal => deal.stage === stageFilter);
-    }
-
-    if (sourceFilter) {
-      filtered = filtered.filter(deal => deal.source === sourceFilter);
-    }
-
-    setFilteredDeals(filtered);
-  }, [deals, searchTerm, stageFilter, sourceFilter, contacts, companies]);
 
   function clearFilters() {
     setSearchTerm('');
+    setStageFilter('');
     setStageFilter('');
     setSourceFilter('');
   }
@@ -425,10 +360,7 @@ function getContactName(contactId) {
       .slice(0, 2) || '?';
   }
 
-  if (loading) return <Loading />;
-  if (error) return <Error message={error} />;
-
-  if (loading) return <Loading />;
+if (loading) return <Loading />;
   if (error) return <Error message={error} onRetry={loadDeals} />;
 
 return (
@@ -962,8 +894,9 @@ return (
           </div>
         </div>
       </Modal>
+</Modal>
     </div>
-);
+  );
 }
 
 export default Deals;
