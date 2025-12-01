@@ -63,7 +63,7 @@ path: "leads",
     ),
   },
   {
-path: "deals",
+path: "pipeline",
     element: (
       <Suspense fallback={<LoadingFallback />}>
         <Deals />

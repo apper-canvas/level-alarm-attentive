@@ -148,12 +148,25 @@ const newDeal = {
       throw new Error('Deal not found');
     }
     
-    const updatedDeal = {
-...deals[index],
+const updatedDeal = {
+      ...deals[index],
       ...updates,
       Id: parseInt(id),
       modifiedDate: new Date().toISOString()
     };
+    
+    // Auto-update probability based on stage
+    if (updates.stage && !updates.hasOwnProperty('probability')) {
+      const stageProbabilities = {
+        'Lead': 10,
+        'Qualified': 25,
+        'Proposal': 50,
+        'Negotiation': 75,
+        'Closed Won': 100,
+        'Closed Lost': 0
+      };
+      updatedDeal.probability = stageProbabilities[updates.stage] || 10;
+    }
     
     // Handle stage-specific updates
     if (updates.stage === 'Closed Won' && !updatedDeal.wonDate) {

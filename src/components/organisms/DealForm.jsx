@@ -89,23 +89,33 @@ setFormData({
     }
   }, [deal, isOpen]);
 
-  function resetForm() {
-setFormData({
-        dealName: '',
-        contactId: '',
-        companyId: '',
-        amount: '',
-        closeDate: '',
-        stage: deal?.stage || 'Lead',
-        probability: deal?.stage === 'Lead' ? 10 : deal?.stage === 'Qualified' ? 25 : deal?.stage === 'Proposal' ? 50 : deal?.stage === 'Negotiation' ? 75 : 10,
-        source: 'Inbound',
-        priority: 'Medium',
-        assignedTo: 'John Smith',
-        products: [],
-        description: '',
-        nextStep: '',
-        competitors: ''
-      });
+function resetForm() {
+    const defaultStage = deal?.stage || 'Lead';
+    const stageProbabilities = {
+      'Lead': 10,
+      'Qualified': 25,
+      'Proposal': 50,
+      'Negotiation': 75,
+      'Closed Won': 100,
+      'Closed Lost': 0
+    };
+    
+    setFormData({
+      dealName: '',
+      contactId: '',
+      companyId: '',
+      amount: '',
+      closeDate: '',
+      stage: defaultStage,
+      probability: stageProbabilities[defaultStage] || 10,
+      source: 'Inbound',
+      priority: 'Medium',
+      assignedTo: 'John Smith',
+      products: [],
+      description: '',
+      nextStep: '',
+      competitors: ''
+    });
     setErrors({});
   }
 
