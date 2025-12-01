@@ -173,10 +173,6 @@ function handleAddDeal(stage = 'Lead') {
     };
   }
 
-  function handleDragStart(e, deal) {
-    setDraggedDeal(deal);
-    e.dataTransfer.effectAllowed = 'move';
-  }
   function handleEditDeal(deal) {
     setSelectedDeal(deal);
     setIsEditModalOpen(true);
@@ -317,23 +313,14 @@ function getDaysInStage(deal) {
     return daysSinceModified;
   }
 
-  function getPriorityColor(priority) {
-    switch (priority?.toLowerCase()) {
-      case 'high': return 'bg-red-100 text-red-800';
-      case 'medium': return 'bg-yellow-100 text-yellow-800';
-      case 'low': return 'bg-green-100 text-green-800';
-      default: return 'bg-gray-100 text-gray-800';
-    }
-  }
 
   if (loading) return <Loading />;
   if (error) return <Error message={error} onRetry={loadDeals} />;
 
 return (
 <div className="space-y-6">
-      <Header 
+<Header 
         title="Sales Pipeline"
-title="Sales Pipeline"
         onAddClick={() => handleAddDeal()}
         addButtonLabel="New Deal"
       />
@@ -526,8 +513,6 @@ title="Sales Pipeline"
             })}
           </div>
         </div>
-      )}
-
 )}
 
       {/* List View (Existing Table) */}
@@ -619,9 +604,7 @@ title="Sales Pipeline"
         )
       )}
 
-      {/* Forecast View */}
-)}
-
+{/* Forecast View */}
       {viewMode === 'forecast' && (
         <div className="bg-white rounded-lg border border-secondary-200 p-6">
           <div className="space-y-6">
@@ -690,9 +673,6 @@ title="Sales Pipeline"
           deal={selectedDeal}
         />
       )}
-
-)}
-
       {/* Edit Deal Modal */}
       {isEditModalOpen && (
         <DealForm
