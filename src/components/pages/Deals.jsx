@@ -285,7 +285,7 @@ function getDealsForStage(stage) {
     return filteredDeals.filter(deal => deal.stage === stage);
   }
 
-  function getStageStats(stage) {
+function getStageStats(stage) {
     const stageDeals = getDealsForStage(stage);
     const totalValue = stageDeals.reduce((sum, deal) => sum + (deal.amount || 0), 0);
     const weightedValue = stageDeals.reduce((sum, deal) => sum + (deal.amount || 0) * (deal.probability || 0) / 100, 0);
@@ -293,17 +293,17 @@ function getDealsForStage(stage) {
     return {
       count: stageDeals.length,
       totalValue,
-};
+      weightedValue
+    };
   }
 
   function clearFilters() {
     setSearchTerm('');
     setStageFilter('');
-    setStageFilter('');
     setSourceFilter('');
   }
 
-function getContactName(contactId) {
+  function getContactName(contactId) {
     const contact = contacts.find(c => c.Id === contactId);
     return contact ? contact.name : 'Unknown Contact';
   }
@@ -894,7 +894,6 @@ return (
           </div>
         </div>
       </Modal>
-</Modal>
     </div>
   );
 }
