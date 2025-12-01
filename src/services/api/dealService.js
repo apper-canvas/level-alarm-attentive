@@ -154,27 +154,15 @@ const newDeal = {
       Id: parseInt(id),
       modifiedDate: new Date().toISOString()
     };
-// Handle stage-specific updates and probability adjustments
+    
+    // Handle stage-specific updates
     if (updates.stage === 'Closed Won' && !updatedDeal.wonDate) {
       updatedDeal.wonDate = new Date().toISOString();
       updatedDeal.lostDate = null;
       updatedDeal.lostReason = null;
-      updatedDeal.probability = 100;
     } else if (updates.stage === 'Closed Lost' && !updatedDeal.lostDate) {
       updatedDeal.lostDate = new Date().toISOString();
       updatedDeal.wonDate = null;
-      updatedDeal.probability = 0;
-    } else if (updates.stage && !updates.probability) {
-      // Auto-update probability based on stage if not explicitly set
-      const stageProbabilities = {
-        'Lead': 10,
-        'Qualified': 25,
-        'Proposal': 50,
-        'Negotiation': 75
-      };
-      if (stageProbabilities[updates.stage]) {
-        updatedDeal.probability = stageProbabilities[updates.stage];
-      }
     }
     
     deals[index] = updatedDeal;

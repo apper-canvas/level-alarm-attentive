@@ -14,9 +14,10 @@ import Select from "@/components/atoms/Select";
 import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
 import Input from "@/components/atoms/Input";
+
 const DEAL_STAGES = [
   { 
-value: 'Lead', 
+    value: 'Lead', 
     label: 'Lead', 
     color: 'bg-gray-100 text-gray-800',
     headerColor: 'bg-gray-500'
@@ -83,7 +84,7 @@ const [deals, setDeals] = useState([]);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [selectedDeal, setSelectedDeal] = useState(null);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-const [dealToDelete, setDealToDelete] = useState(null);
+  const [dealToDelete, setDealToDelete] = useState(null);
   const [draggedDeal, setDraggedDeal] = useState(null);
   useEffect(() => {
     loadDeals();
@@ -157,22 +158,6 @@ function handleAddDeal(stage = 'Lead') {
     setIsAddModalOpen(true);
   }
 
-  function getDealsForStage(stage) {
-    return filteredDeals.filter(deal => deal.stage === stage);
-  }
-
-  function getStageStats(stage) {
-    const stageDeals = getDealsForStage(stage);
-    const totalValue = stageDeals.reduce((sum, deal) => sum + (deal.amount || 0), 0);
-    const weightedValue = stageDeals.reduce((sum, deal) => sum + ((deal.amount || 0) * (deal.probability || 0) / 100), 0);
-    
-    return {
-      count: stageDeals.length,
-      totalValue,
-      weightedValue
-    };
-  }
-
   function handleEditDeal(deal) {
     setSelectedDeal(deal);
     setIsEditModalOpen(true);
@@ -222,7 +207,7 @@ if (selectedDeal && selectedDeal.Id) {
   }
 
   function handleDragOver(e) {
-e.preventDefault();
+    e.preventDefault();
     e.dataTransfer.dropEffect = 'move';
   }
 
@@ -243,6 +228,22 @@ e.preventDefault();
     }
     
     setDraggedDeal(null);
+  }
+
+  function getDealsForStage(stage) {
+    return filteredDeals.filter(deal => deal.stage === stage);
+  }
+
+  function getStageStats(stage) {
+    const stageDeals = getDealsForStage(stage);
+    const totalValue = stageDeals.reduce((sum, deal) => sum + (deal.amount || 0), 0);
+    const weightedValue = stageDeals.reduce((sum, deal) => sum + (deal.amount || 0) * (deal.probability || 0) / 100, 0);
+    
+    return {
+      count: stageDeals.length,
+      totalValue,
+      weightedValue
+    };
   }
 
   function clearFilters() {
@@ -291,28 +292,27 @@ function getContactName(contactId) {
     });
   }
 
-function getDaysInStage(deal) {
+  function getDaysInStage(deal) {
     if (!deal.modifiedDate) return 0;
     const daysSinceModified = Math.floor((new Date() - new Date(deal.modifiedDate)) / (1000 * 60 * 60 * 24));
     return daysSinceModified;
   }
 
-
   if (loading) return <Loading />;
   if (error) return <Error message={error} onRetry={loadDeals} />;
 
 return (
-<div className="space-y-6">
-<Header 
+    <div className="space-y-6">
+      <Header 
         title="Sales Pipeline"
-        onAddClick={() => handleAddDeal()}
+onAddClick={() => handleAddDeal()}
         addButtonLabel="New Deal"
       />
 
 {/* Controls */}
       <div className="bg-white rounded-lg border border-secondary-200 p-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
-<div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-4">
             <Input
               type="text"
               placeholder="Search deals..."
@@ -355,7 +355,7 @@ return (
       </div>
 
 {/* Pipeline Board */}
-{viewMode === 'board' && (
+      {viewMode === 'board' && (
         <div className="bg-white rounded-lg border border-secondary-200 p-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-6 gap-6">
             {DEAL_STAGES.map((stage) => {
@@ -401,11 +401,10 @@ return (
                           draggable
                           onDragStart={(e) => handleDragStart(e, deal)}
                           className="bg-white rounded-lg border border-secondary-200 p-4 cursor-move hover:shadow-md transition-shadow duration-200 group"
-                          onClick={() => handleEditDeal(deal)}
                         >
                           {/* Deal Header */}
                           <div className="flex items-start justify-between mb-2">
-                            <h4 className="font-semibold text-secondary-900 text-sm leading-5 flex-1">
+<h4 className="font-semibold text-secondary-900 text-sm leading-5 flex-1">
                               {deal.dealName}
                             </h4>
                             <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -497,7 +496,7 @@ return (
             })}
           </div>
         </div>
-)}
+      )}
 
       {/* List View (Existing Table) */}
       {viewMode === 'list' && (
@@ -588,7 +587,7 @@ return (
         )
       )}
 
-{/* Forecast View */}
+      {/* Forecast View */}
       {viewMode === 'forecast' && (
         <div className="bg-white rounded-lg border border-secondary-200 p-6">
           <div className="space-y-6">
@@ -657,6 +656,7 @@ return (
           deal={selectedDeal}
         />
       )}
+
       {/* Edit Deal Modal */}
       {isEditModalOpen && (
         <DealForm
