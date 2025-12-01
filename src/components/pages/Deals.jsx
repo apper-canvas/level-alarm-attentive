@@ -245,22 +245,6 @@ e.preventDefault();
     setDraggedDeal(null);
   }
 
-  function getDealsForStage(stage) {
-    return filteredDeals.filter(deal => deal.stage === stage);
-  }
-
-  function getStageStats(stage) {
-    const stageDeals = getDealsForStage(stage);
-    const totalValue = stageDeals.reduce((sum, deal) => sum + (deal.amount || 0), 0);
-    const weightedValue = stageDeals.reduce((sum, deal) => sum + (deal.amount || 0) * (deal.probability || 0) / 100, 0);
-    
-    return {
-      count: stageDeals.length,
-      totalValue,
-      weightedValue
-    };
-  }
-
   function clearFilters() {
     setSearchTerm('');
     setStageFilter('');
