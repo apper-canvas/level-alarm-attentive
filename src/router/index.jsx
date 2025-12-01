@@ -7,6 +7,7 @@ const Contacts = lazy(() => import("@/components/pages/Contacts"));
 const Companies = lazy(() => import("@/components/pages/Companies"));
 const CompanyDetails = lazy(() => import("@/components/pages/CompanyDetails"));
 const Leads = lazy(() => import("@/components/pages/Leads"));
+const Tasks = lazy(() => import("@/components/pages/Tasks"));
 const Deals = lazy(() => import("@/components/pages/Deals"));
 const NotFound = lazy(() => import("@/components/pages/NotFound"));
 const LoadingFallback = () => (
@@ -54,11 +55,19 @@ path: "companies",
       </Suspense>
     ),
   },
-  {
+{
 path: "leads",
     element: (
       <Suspense fallback={<LoadingFallback />}>
         <Leads />
+      </Suspense>
+    ),
+  },
+  {
+    path: "tasks",
+    element: (
+      <Suspense fallback={<LoadingFallback />}>
+        <Tasks />
       </Suspense>
     ),
   },

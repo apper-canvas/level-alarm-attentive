@@ -27,6 +27,11 @@ const menuItems = [
       icon: "TrendingUp" 
     },
     { 
+      name: "Tasks", 
+      path: "/tasks", 
+      icon: "CheckSquare" 
+    },
+    { 
       name: "Deals", 
       path: "/pipeline", 
       icon: "Pipeline" 
