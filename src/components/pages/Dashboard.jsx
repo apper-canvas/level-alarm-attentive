@@ -65,7 +65,7 @@ const Dashboard = () => {
   const stats = calculateStats();
 
 return (
-    <div className="flex flex-col min-h-full">
+    <div className="p-6">
       {/* Header Section */}
       <div className="mb-6">
         <h1 className="text-3xl font-bold bg-gradient-to-r from-secondary-700 to-secondary-900 bg-clip-text text-transparent">
