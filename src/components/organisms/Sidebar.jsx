@@ -81,8 +81,7 @@ return (
             ))}
           </nav>
         </div>
-      </aside>
-      </aside>
+</aside>
 
       {/* Mobile Sidebar */}
       <div className={cn("lg:hidden", isOpen ? "block" : "hidden")}>
