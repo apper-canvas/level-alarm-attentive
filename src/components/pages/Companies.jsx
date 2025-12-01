@@ -6,7 +6,6 @@ import Modal from "@/components/molecules/Modal";
 import Loading from "@/components/ui/Loading";
 import Empty from "@/components/ui/Empty";
 import Error from "@/components/ui/Error";
-import Contacts from "@/components/pages/Contacts";
 import CompanyForm from "@/components/organisms/CompanyForm";
 import CompanyCard from "@/components/organisms/CompanyCard";
 import Header from "@/components/organisms/Header";
