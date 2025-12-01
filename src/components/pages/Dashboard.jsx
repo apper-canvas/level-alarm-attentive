@@ -64,49 +64,53 @@ const Dashboard = () => {
 
   const stats = calculateStats();
 
-  return (
-    <div className="p-6 space-y-8">
-      <div className="space-y-2">
+return (
+    <div className="flex flex-col min-h-full">
+      {/* Header Section */}
+      <div className="mb-6">
         <h1 className="text-3xl font-bold bg-gradient-to-r from-secondary-700 to-secondary-900 bg-clip-text text-transparent">
           Dashboard
         </h1>
-        <p className="text-secondary-600">
+        <p className="text-secondary-600 mt-2">
           Overview of your customer relationships and lead pipeline
         </p>
       </div>
 
-      <DashboardStats stats={stats} />
+      {/* Main Content */}
+      <div className="flex-1 space-y-6">
+        <DashboardStats stats={stats} />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <LeadStatusChart leads={leads} />
-        
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-secondary-200">
-          <h3 className="text-lg font-semibold text-secondary-900 mb-4">
-            Recent Activity
-          </h3>
-          <div className="space-y-4">
-            {leads
-              .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))
-              .slice(0, 5)
-              .map((lead) => (
-                <div key={lead.Id} className="flex items-center justify-between p-3 bg-secondary-50 rounded-lg">
-                  <div>
-                    <p className="font-medium text-secondary-900">{lead.name}</p>
-                    <p className="text-sm text-secondary-600">{lead.company}</p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <LeadStatusChart leads={leads} />
+          
+          <div className="bg-white p-6 rounded-xl shadow-sm border border-secondary-200">
+            <h3 className="text-lg font-semibold text-secondary-900 mb-4">
+              Recent Activity
+            </h3>
+            <div className="space-y-3">
+              {leads
+                .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))
+                .slice(0, 5)
+                .map((lead) => (
+                  <div key={lead.Id} className="flex items-center justify-between p-3 bg-secondary-50 rounded-lg">
+                    <div>
+                      <p className="font-medium text-secondary-900">{lead.name}</p>
+                      <p className="text-sm text-secondary-600">{lead.company}</p>
+                    </div>
+                    <div className="text-right">
+                      <span className={`inline-block px-2 py-1 rounded-full text-xs font-medium ${
+                        lead.status === "qualified" ? "bg-green-100 text-green-700" :
+                        lead.status === "contacted" ? "bg-yellow-100 text-yellow-700" :
+                        lead.status === "lost" ? "bg-red-100 text-red-700" :
+                        "bg-blue-100 text-blue-700"
+                      }`}>
+                        {lead.status.charAt(0).toUpperCase() + lead.status.slice(1)}
+                      </span>
+                    </div>
                   </div>
-                  <div className="text-right">
-                    <span className={`inline-block px-2 py-1 rounded-full text-xs font-medium ${
-                      lead.status === "qualified" ? "bg-green-100 text-green-700" :
-                      lead.status === "contacted" ? "bg-yellow-100 text-yellow-700" :
-                      lead.status === "lost" ? "bg-red-100 text-red-700" :
-                      "bg-blue-100 text-blue-700"
-                    }`}>
-                      {lead.status.charAt(0).toUpperCase() + lead.status.slice(1)}
-                    </span>
-                  </div>
-                </div>
-              ))
-            }
+                ))
+              }
+            </div>
           </div>
         </div>
       </div>
