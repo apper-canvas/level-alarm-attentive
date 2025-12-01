@@ -56,6 +56,13 @@ export async function createTask(taskData) {
     assignedUserId: taskData.assignedUserId || null,
     relatedRecordType: taskData.relatedRecordType || null,
     relatedRecordId: taskData.relatedRecordId || null,
+    // Enhanced fields for activity support
+    activityTypeId: taskData.activityTypeId || null,
+    reminderEnabled: taskData.reminderEnabled || false,
+    reminderMinutes: taskData.reminderMinutes || 15,
+    location: taskData.location || '',
+    duration: taskData.duration || null,
+    notes: taskData.notes || '',
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString()
   };
@@ -126,6 +133,13 @@ export async function getTasksByRelatedRecord(recordType, recordId) {
   ).map(task => ({ ...task }));
 }
 
+// Get tasks by activity type
+export async function getTasksByActivityType(activityTypeId) {
+  await delay(200);
+  const tasks = getStoredTasks();
+  return tasks.filter(task => task.activityTypeId === parseInt(activityTypeId)).map(task => ({ ...task }));
+}
+
 export const taskService = {
   getAll: getAllTasks,
   getById: getTaskById,
@@ -134,5 +148,6 @@ export const taskService = {
   delete: deleteTask,
   getByStatus: getTasksByStatus,
   getByAssignedUser: getTasksByAssignedUser,
-  getByRelatedRecord: getTasksByRelatedRecord
+  getByRelatedRecord: getTasksByRelatedRecord,
+  getByActivityType: getTasksByActivityType
 };

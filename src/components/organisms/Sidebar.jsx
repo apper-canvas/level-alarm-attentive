@@ -1,9 +1,7 @@
 import { NavLink } from "react-router-dom";
 import React from "react";
-import { cn } from "@/utils/cn";
 import ApperIcon from "@/components/ApperIcon";
-import Leads from "@/components/pages/Leads";
-
+import { cn } from "@/utils/cn";
 const Sidebar = ({ isOpen, onClose, className, ...props }) => {
 const menuItems = [
     { 
@@ -38,15 +36,15 @@ const menuItems = [
     },
   ];
 
-  return (
+return (
     <>
       {/* Desktop Sidebar */}
       <aside className={cn(
-        "hidden lg:flex lg:flex-col lg:w-64 lg:fixed lg:inset-y-0 bg-white border-r border-secondary-200 shadow-sm",
+        "hidden lg:flex lg:flex-shrink-0 lg:w-64",
         className
       )} {...props}>
-        <div className="flex flex-col flex-1 min-h-0">
-          <div className="flex items-center h-16 flex-shrink-0 px-6 border-b border-secondary-200">
+        <div className="flex flex-col w-64 border-r border-secondary-200 bg-white">
+          <div className="flex items-center flex-shrink-0 h-16 px-6 border-b border-secondary-200">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center">
                 <ApperIcon name="Building" size={20} className="text-white" />
@@ -54,7 +52,7 @@ const menuItems = [
               <h1 className="text-xl font-bold bg-gradient-to-r from-primary-600 to-primary-700 bg-clip-text text-transparent">
                 CRM Pro
               </h1>
-</div>
+            </div>
           </div>
           
           <nav className="mt-8 flex-1 px-4 space-y-2 overflow-y-auto">
@@ -82,7 +80,8 @@ const menuItems = [
               </NavLink>
             ))}
           </nav>
-</div>
+        </div>
+      </aside>
       </aside>
 
       {/* Mobile Sidebar */}

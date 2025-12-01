@@ -1,0 +1,68 @@
+[
+  {
+    "Id": 1,
+    "name": "Call",
+    "description": "Phone calls with contacts, prospects, or customers",
+    "icon": "Phone",
+    "color": "#10b981",
+    "isCustom": false,
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "Id": 2,
+    "name": "Meeting",
+    "description": "In-person or virtual meetings and appointments",
+    "icon": "Users",
+    "color": "#3b82f6",
+    "isCustom": false,
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "Id": 3,
+    "name": "Email",
+    "description": "Email communications and correspondence",
+    "icon": "Mail",
+    "color": "#f59e0b",
+    "isCustom": false,
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "Id": 4,
+    "name": "Follow-up",
+    "description": "Follow-up activities and check-ins",
+    "icon": "ArrowRight",
+    "color": "#8b5cf6",
+    "isCustom": false,
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "Id": 5,
+    "name": "Presentation",
+    "description": "Product demos and presentations",
+    "icon": "Presentation",
+    "color": "#ef4444",
+    "isCustom": true,
+    "isActive": true,
+    "createdAt": "2024-01-05T14:30:00.000Z",
+    "updatedAt": "2024-01-05T14:30:00.000Z"
+  },
+  {
+    "Id": 6,
+    "name": "Site Visit",
+    "description": "On-site visits and facility tours",
+    "icon": "MapPin",
+    "color": "#06b6d4",
+    "isCustom": true,
+    "isActive": true,
+    "createdAt": "2024-01-08T11:15:00.000Z",
+    "updatedAt": "2024-01-08T11:15:00.000Z"
+  }
+]
